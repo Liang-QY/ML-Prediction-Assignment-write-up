@@ -14,13 +14,14 @@ library(e1071)
 library(randomForest)
 install.packages('rattle')
 set.seed(1) 
-#download
-train_raw = read.csv("/Users/apple/Downloads/pml-training.csv")
-test_raw= read.csv("/Users/apple/Downloads/pml-testing.csv") 
 #replace with NA
 train<-read.csv("/Users/apple/Downloads/pml-training.csv", na.strings=c("NA","#DIV/0!",""))
 test<-read.csv("/Users/apple/Downloads/pml-testing.csv", na.strings=c("NA","#DIV/0!",""))
 ```
+<!--begin.rcode
+print(cars)
+end.rcode-->
+
 The first step is data cleansing. After download the training and testing data, I replaced all the lacked data with NA and delete all the column which almost only contained NA. I assumed the column doesn’t contain any useful number if the mean of the column is 0. Besides, since I focused on analyzing the data from wearable accelerometers, the users name and time data are also removed for their irrelevance.
 
 ```#clean
@@ -66,9 +67,3 @@ The fifth step predict in testing data. The answer is showed on the graph.
 testpredict<-predict(mod_rf, test)
 testpredict
 ```
-
-
-
-
-
-
